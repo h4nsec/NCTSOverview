@@ -7,7 +7,7 @@
     { "src": "/(.*)", "dest": "/index.html" }
   ],
   "functions": {
-    "api/fhir/[type].js": { "maxDuration": 60 },
+    "api/fhir.js": { "maxDuration": 60 },
     "api/syndication.js": { "maxDuration": 30 }
   }
 }

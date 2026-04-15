@@ -444,7 +444,7 @@ export default function Dashboard({ token, credentials, onLogout }) {
         const rt = FHIR_TYPES[i]
         setLoadingStage(`Fetching ${rt}s…`)
         try {
-          const fr = await fetch(`/api/fhir/${rt}`, { headers: { Authorization: token } })
+          const fr = await fetch(`/api/fhir?type=${rt}`, { headers: { Authorization: token } })
           if (fr.ok) {
             const data = await fr.json()
             fhir[rt] = data.resources
