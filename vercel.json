@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm install && npm install --prefix client",
+  "installCommand": "npm install && npm install --prefix client && chmod -R +x client/node_modules/.bin",
   "buildCommand": "npm run build --prefix client",
   "outputDirectory": "client/dist",
   "rewrites": [
