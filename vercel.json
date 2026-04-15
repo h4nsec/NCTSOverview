@@ -1,8 +1,9 @@
 {
   "buildCommand": "cd client && npm install && npm run build",
   "outputDirectory": "client/dist",
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ],
   "functions": {
     "api/fhir/[type].js": { "maxDuration": 60 },
