@@ -1,9 +1,9 @@
-const axios = require('axios');
-const xml2js = require('xml2js');
+import axios from 'axios';
+import xml2js from 'xml2js';
 
 const NCTS_SYND_URL = 'https://api.healthterminologies.gov.au/syndication/v1/syndication.xml';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
   const token = req.headers['authorization'];
@@ -59,4 +59,4 @@ module.exports = async function handler(req, res) {
     const status = err.response?.status || 500;
     res.status(status).json({ error: 'Failed to fetch syndication feed', detail: err.message });
   }
-};
+}

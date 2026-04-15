@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { clientId, clientSecret } = req.body;
@@ -22,4 +22,4 @@ module.exports = async function handler(req, res) {
     const status = err.response?.status || 500;
     res.status(status).json({ error: 'Authentication failed', detail: err.response?.data || err.message });
   }
-};
+}

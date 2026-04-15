@@ -1,8 +1,8 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const NCTS_FHIR_BASE = 'https://api.healthterminologies.gov.au/integration/v2/fhir';
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
   const token = req.headers['authorization'];
@@ -18,4 +18,4 @@ module.exports = async function handler(req, res) {
     const status = err.response?.status || 500;
     res.status(status).json({ error: 'Failed to fetch TerminologyCapabilities', detail: err.message });
   }
-};
+}
