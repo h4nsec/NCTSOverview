@@ -6,6 +6,7 @@ module.exports = async function handler(req, res) {
   const { clientId, clientSecret } = req.body;
   if (!clientId || !clientSecret) return res.status(400).json({ error: 'Missing credentials' });
 
+  res.setHeader('Cache-Control', 'no-store');
   try {
     const params = new URLSearchParams();
     params.append('grant_type', 'client_credentials');

@@ -9,6 +9,7 @@ module.exports = async function handler(req, res) {
   const token = req.headers['authorization'];
   if (!token) return res.status(401).json({ error: 'No token provided' });
 
+  res.setHeader('Cache-Control', 'no-store');
   try {
     const response = await axios.get(NCTS_SYND_URL, {
       headers: { Authorization: token },

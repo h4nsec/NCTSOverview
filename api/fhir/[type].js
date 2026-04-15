@@ -46,6 +46,7 @@ module.exports = async function handler(req, res) {
   const { type } = req.query;
   if (!ALLOWED.includes(type)) return res.status(400).json({ error: 'Invalid resource type' });
 
+  res.setHeader('Cache-Control', 'no-store');
   try {
     const resources = await fetchAll(type, token);
     res.json({ resourceType: type, count: resources.length, resources });
